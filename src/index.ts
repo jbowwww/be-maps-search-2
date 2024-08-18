@@ -1,7 +1,9 @@
 import { getPlaceAutocomplete } from './maps-api';
 import { MapsDataResult } from './maps-api-data-types';
 
-export type AutoCompleteDetails = { placeId: MapsDataResult["id"]; };
+export type AutoCompleteDetails = Partial<MapsDataResult>;
+// { placeId: MapsDataResult["id"]; };
+// ^ you could be this specific if you like
 
 export async function getAutoCompleteDetails(address: string): Promise<AutoCompleteDetails[]> {
     // our API client returns the raw results array in the response body from the maps API
@@ -12,6 +14,10 @@ export async function getAutoCompleteDetails(address: string): Promise<AutoCompl
     // and MapsDataResult's subtypes to get your IDE to show you the available properties of r.
     return results.map(r => ({
         placeId: r.id,
-        // streetNumber:
-    }));
+        streetNumber: r.address.streetNumber,
+        countryCode: r.address.countryCode,
+        country: r.address.country,
+        freeformAddress: r.address.freeformAddress,
+        municipality: r.address.municipality,
+    } as AutoCompleteDetails));
 }
