@@ -791,7 +791,7 @@ export const data = {
     ]
 };
 
-export type DataType = typeof data;
-export type DataSummaryType = DataType["summary"];
-export type DataResultsType = DataType["results"];
-export type DataResultType = DataResultsType extends Array<infer T> ? T : never;
+export type MapsData = typeof data;
+export type MapsDataSummary = MapsData["summary"];
+export type MapsDataResults = MapsData["results"];
+export type MapsDataResult = MapsDataResults extends Array<infer T> ? T : never;
