@@ -17,6 +17,12 @@ describe("Tomtom Places E2E Tests", () => {
       const res = await getAutoCompleteDetails("Charlotte Street");
       const firstRes = res[0];
       expect(firstRes).toHaveProperty("placeId");
+    });
+
+    it("can fetch the properties of AutoCompleteDetails from the autocomplete api", async () => {
+      const res = await getAutoCompleteDetails("Charlotte Street");
+      const firstRes = res[0];
+      expect(firstRes).toHaveProperty("placeId");
       expect(firstRes).toHaveProperty("streetNumber");
       expect(firstRes).toHaveProperty("countryCode");
       expect(firstRes).toHaveProperty("country");
